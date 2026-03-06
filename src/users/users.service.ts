@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { DatabaseService } from 'src/database/database.service';
-import { CreaateUserDto } from './dto/create-user.dto';
+import { CreateUserDto } from './dto/create-user.dto';
 import { User, Role } from './entities/user.entity';
 import * as bcrypt from 'bcrypt';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -11,7 +11,7 @@ const SALT_ROUNDS = 10;
 export class UsersService {
     constructor(private readonly databaseService: DatabaseService) { }
 
-    async createUser(createUserDto: CreaateUserDto): Promise<User> {
+    async createUser(createUserDto: CreateUserDto): Promise<User> {
         const hashedPassword = await bcrypt.hash(createUserDto.password, SALT_ROUNDS);
         const user = await this.databaseService.user.create({
             data: {

@@ -2,7 +2,7 @@ import { IsNotEmpty, IsString, MaxLength, IsEmail, MinLength, IsOptional, IsEnum
 import { Role } from "../entities/user.entity";
 // import { Unique } from "typeorm";
 
-export class CreaateUserDto {
+export class CreateUserDto {
     @IsNotEmpty({message: 'Le nom est requis'})
     @IsString({message: 'Le nom doit être une chaîne de caractères'})
     @MinLength(3, {message: 'Le nom doit contenir au moins 3 caractères'})
